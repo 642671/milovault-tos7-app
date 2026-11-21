@@ -1,0 +1,97 @@
+[zh-cn]
+name = "钥匙匣"
+auth = "miaoqi"
+descript = "基于 Vaultwarden 的自托管密码库，兼容 Bitwarden 浏览器扩展、手机 App 和 bw CLI。"
+release_note = "1.0.0：首个 Docker 版本，基于 Vaultwarden 1.37.5。"
+important = "首次打开使用自签 HTTPS 证书，浏览器会提示不安全，请确认后继续。正式使用建议放在受信任的 HTTPS 反向代理之后，并关闭注册。"
+
+[zh-hk]
+name = "鑰匙匣"
+auth = "miaoqi"
+descript = "基於 Vaultwarden 的自託管密碼庫，相容 Bitwarden 瀏覽器擴充、手機 App 和 bw CLI。"
+release_note = "1.0.0：首個 Docker 版本，基於 Vaultwarden 1.37.5。"
+important = "首次開啟使用自簽 HTTPS 憑證，瀏覽器會提示不安全，請確認後繼續。正式使用建議放在受信任的 HTTPS 反向代理之後，並關閉註冊。"
+
+[en-us]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Self-hosted Bitwarden-compatible password vault powered by Vaultwarden, with browser extension, mobile app, and bw CLI support."
+release_note = "1.0.0: initial Docker release based on Vaultwarden 1.37.5."
+important = "The first launch uses a self-signed HTTPS certificate and the browser will warn. For production, place it behind a trusted HTTPS reverse proxy and disable signups."
+
+[fr-fr]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Coffre de mots de passe auto-heberge compatible Bitwarden, propulse par Vaultwarden."
+release_note = "1.0.0 : version Docker initiale basee sur Vaultwarden 1.37.5."
+important = "Le premier lancement utilise un certificat HTTPS auto-signe et le navigateur affichera un avertissement. En production, placez-le derriere un reverse proxy HTTPS de confiance."
+
+[de-de]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Selbst gehosteter Bitwarden-kompatibler Passwort-Tresor auf Basis von Vaultwarden."
+release_note = "1.0.0: erste Docker-Version auf Basis von Vaultwarden 1.37.5."
+important = "Beim ersten Start wird ein selbstsigniertes HTTPS-Zertifikat verwendet; der Browser warnt. Fuer den Produktivbetrieb hinter einen vertrauenswuerdigen HTTPS-Reverse-Proxy stellen."
+
+[it-it]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Cassaforte password self-hosted compatibile con Bitwarden, basata su Vaultwarden."
+release_note = "1.0.0: prima versione Docker basata su Vaultwarden 1.37.5."
+important = "Al primo avvio viene usato un certificato HTTPS self-signed e il browser mostrera un avviso. In produzione, posizionarlo dietro un reverse proxy HTTPS affidabile."
+
+[es-es]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Boveda de contrasenas autoalojada compatible con Bitwarden, impulsada por Vaultwarden."
+release_note = "1.0.0: primera version Docker basada en Vaultwarden 1.37.5."
+important = "El primer inicio usa un certificado HTTPS autofirmado y el navegador mostrara una advertencia. En produccion, coloquelo detras de un proxy inverso HTTPS de confianza."
+
+[hu-hu]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Sajat hosztolt, Bitwarden-kompatibilis jelszotar Vaultwarden alapon."
+release_note = "1.0.0: elso Docker kiadas, Vaultwarden 1.37.5 alapon."
+important = "Az elso inditas onalairt HTTPS tanusitvanyt hasznal, a bongeszo figyelmeztetni fog. Eles hasznalathoz tedd megbizhato HTTPS reverse proxy moge."
+
+[ja-jp]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Vaultwarden ベースのセルフホスト型 Bitwarden 互換パスワード保管庫です。"
+release_note = "1.0.0：Vaultwarden 1.37.5 ベースの初回 Docker リリース。"
+important = "初回起動時は自己署名 HTTPS 証明書を使用するため、ブラウザに警告が表示されます。本番運用では信頼できる HTTPS リバースプロキシの背後に配置してください。"
+
+[ko-kr]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Vaultwarden 기반의 자체 호스팅 Bitwarden 호환 비밀번호 보관함입니다."
+release_note = "1.0.0: Vaultwarden 1.37.5 기반 최초 Docker 릴리스."
+important = "첫 실행 시 자체 서명 HTTPS 인증서를 사용하므로 브라우저 경고가 표시됩니다. 운영 환경에서는 신뢰할 수 있는 HTTPS 리버스 프록시 뒤에 배치하세요."
+
+[pl-pl]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Samodzielnie hostowany sejf hasel zgodny z Bitwarden, oparty na Vaultwarden."
+release_note = "1.0.0: pierwsze wydanie Docker oparte na Vaultwarden 1.37.5."
+important = "Przy pierwszym uruchomieniu uzywany jest samopodpisany certyfikat HTTPS i przegladarka pokaze ostrzezenie. W srodowisku produkcyjnym umiesc aplikacje za zaufanym reverse proxy HTTPS."
+
+[ru-ru]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Самостоятельно размещаемое хранилище паролей, совместимое с Bitwarden, на базе Vaultwarden."
+release_note = "1.0.0: первый Docker-релиз на базе Vaultwarden 1.37.5."
+important = "При первом запуске используется самоподписанный HTTPS-сертификат, и браузер покажет предупреждение. Для production разместите приложение за доверенным HTTPS reverse proxy."
+
+[tr-tr]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Vaultwarden tabanli, Bitwarden uyumlu, kendi sunucunuzda barindirilan parola kasasi."
+release_note = "1.0.0: Vaultwarden 1.37.5 tabanli ilk Docker surumu."
+important = "Ilk acilista kendinden imzali HTTPS sertifikasi kullanilir ve tarayici uyarir. Uretimde guvenilir bir HTTPS reverse proxy arkasina yerlestirin."
+
+[pt-pt]
+name = "MiloVault"
+auth = "miaoqi"
+descript = "Cofre de palavras-passe auto-alojado compativel com Bitwarden, baseado em Vaultwarden."
+release_note = "1.0.0: versao Docker inicial baseada em Vaultwarden 1.37.5."
+important = "O primeiro arranque usa um certificado HTTPS auto-assinado e o navegador mostrara um aviso. Em producao, coloque-o atras de um reverse proxy HTTPS fiavel."

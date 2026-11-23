@@ -19,6 +19,7 @@
   `/data` and `/data/certs` are 0700, and the private key and database files are
   0600. The main container drops all capabilities and enables
   `no-new-privileges`.
+- Remove ASCII semicolons from language values: the platform INI parser treats them as comment starts and truncated the English description and release notes in the Parse Result.
 - Add a complete privacy policy, point `help` at it, align the description in
   all 14 languages with the delivered web vault, and remove the beta flag.
 

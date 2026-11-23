@@ -15,43 +15,43 @@ important = "首次開啟使用自簽 HTTPS 憑證，瀏覽器會提示不安全
 [en-us]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Self-hosted Vaultwarden password vault served at https://<NAS-IP>:18443 with a self-signed HTTPS certificate; provides the web vault and a Bitwarden-compatible API."
-release_note = "1.0.1: fixed the clean-install restart loop caused by /data permissions; added an init service to prepare ownership, made certificate generation verifiable and idempotent, tightened file permissions, added a privacy policy, and aligned the description with the delivered web vault."
+descript = "Self-hosted Vaultwarden password vault served at https://<NAS-IP>:18443 with a self-signed HTTPS certificate, provides the web vault and a Bitwarden-compatible API."
+release_note = "1.0.1: fixed the clean-install restart loop caused by /data permissions, added an init service to prepare ownership, made certificate generation verifiable and idempotent, tightened file permissions, added a privacy policy, and aligned the description with the delivered web vault."
 important = "The first launch uses a self-signed HTTPS certificate and the browser will warn. Disable signups after creating the first account. For production, place it behind a trusted HTTPS reverse proxy."
 
 [fr-fr]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Coffre de mots de passe Vaultwarden auto-heberge, servi sur https://<NAS-IP>:18443 avec un certificat HTTPS auto-signe ; fournit le coffre web et une API compatible Bitwarden."
-release_note = "1.0.1 : correction de la boucle de redemarrage apres installation propre (permissions de /data) ; service d'initialisation pour l'appartenance, generation de certificat idempotente, permissions resserrees, politique de confidentialite et description alignee sur le coffre web."
+descript = "Coffre de mots de passe Vaultwarden auto-heberge, servi sur https://<NAS-IP>:18443 avec un certificat HTTPS auto-signe, fournit le coffre web et une API compatible Bitwarden."
+release_note = "1.0.1 : correction de la boucle de redemarrage apres installation propre (permissions de /data), service d'initialisation pour l'appartenance, generation de certificat idempotente, permissions resserrees, politique de confidentialite et description alignee sur le coffre web."
 important = "Le premier lancement utilise un certificat HTTPS auto-signe et le navigateur affichera un avertissement. Desactivez les inscriptions apres le premier compte. En production, placez-le derriere un reverse proxy HTTPS de confiance."
 
 [de-de]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Selbst gehosteter Vaultwarden-Passworttresor unter https://<NAS-IP>:18443 mit selbstsigniertem HTTPS-Zertifikat; bietet den Web-Tresor und eine Bitwarden-kompatible API."
-release_note = "1.0.1: Neustartschleife nach sauberer Installation durch /data-Berechtigungen behoben; Init-Container fuer Besitzrechte, idempotente Zertifikatserzeugung, strengere Dateirechte, Datenschutzerklaerung und angepasste Beschreibung."
-important = "Beim ersten Start wird ein selbstsigniertes HTTPS-Zertifikat verwendet; der Browser warnt. Nach dem ersten Konto Registrierungen deaktivieren. Fuer den Produktivbetrieb hinter einen vertrauenswuerdigen HTTPS-Reverse-Proxy stellen."
+descript = "Selbst gehosteter Vaultwarden-Passworttresor unter https://<NAS-IP>:18443 mit selbstsigniertem HTTPS-Zertifikat, bietet den Web-Tresor und eine Bitwarden-kompatible API."
+release_note = "1.0.1: Neustartschleife nach sauberer Installation durch /data-Berechtigungen behoben, Init-Container fuer Besitzrechte, idempotente Zertifikatserzeugung, strengere Dateirechte, Datenschutzerklaerung und angepasste Beschreibung."
+important = "Beim ersten Start wird ein selbstsigniertes HTTPS-Zertifikat verwendet, der Browser warnt. Nach dem ersten Konto Registrierungen deaktivieren. Fuer den Produktivbetrieb hinter einen vertrauenswuerdigen HTTPS-Reverse-Proxy stellen."
 
 [it-it]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Cassaforte Vaultwarden self-hosted servita su https://<NAS-IP>:18443 con certificato HTTPS self-signed; offre la web vault e un'API compatibile Bitwarden."
-release_note = "1.0.1: risolto il riavvio continuo dopo installazione pulita (permessi di /data); servizio di init per la proprieta, generazione certificato idempotente, permessi ridotti, privacy policy e descrizione allineata alla web vault."
+descript = "Cassaforte Vaultwarden self-hosted servita su https://<NAS-IP>:18443 con certificato HTTPS self-signed, offre la web vault e un'API compatibile Bitwarden."
+release_note = "1.0.1: risolto il riavvio continuo dopo installazione pulita (permessi di /data), servizio di init per la proprieta, generazione certificato idempotente, permessi ridotti, privacy policy e descrizione allineata alla web vault."
 important = "Al primo avvio viene usato un certificato HTTPS self-signed e il browser mostrera un avviso. Disabilitare le registrazioni dopo il primo account. In produzione, posizionarlo dietro un reverse proxy HTTPS affidabile."
 
 [es-es]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Boveda de contrasenas Vaultwarden autoalojada en https://<NAS-IP>:18443 con certificado HTTPS autofirmado; ofrece la boveda web y una API compatible con Bitwarden."
-release_note = "1.0.1: corregido el bucle de reinicio tras una instalacion limpia (permisos de /data); servicio de inicio para la propiedad, generacion de certificado idempotente, permisos restringidos, politica de privacidad y descripcion alineada con la boveda web."
+descript = "Boveda de contrasenas Vaultwarden autoalojada en https://<NAS-IP>:18443 con certificado HTTPS autofirmado, ofrece la boveda web y una API compatible con Bitwarden."
+release_note = "1.0.1: corregido el bucle de reinicio tras una instalacion limpia (permisos de /data), servicio de inicio para la propiedad, generacion de certificado idempotente, permisos restringidos, politica de privacidad y descripcion alineada con la boveda web."
 important = "El primer inicio usa un certificado HTTPS autofirmado y el navegador mostrara una advertencia. Desactive los registros tras crear la primera cuenta. En produccion, coloquelo detras de un proxy inverso HTTPS de confianza."
 
 [hu-hu]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Sajat hosztolt Vaultwarden jelszotar a https://<NAS-IP>:18443 cimen, onalairt HTTPS tanusitvannyal; webes tarat es Bitwarden-kompatibilis API-t biztosít."
-release_note = "1.0.1: a tiszta telepites utani ujraindulasi hurok javitasa (/data jogosultsagok); init szolgaltatas a tulajdonjoghoz, idempotens tanusitvanygeneralas, szigorubb fajljogosultsagok, adatvedelmi tajekoztato es pontosabb leiras."
+descript = "Sajat hosztolt Vaultwarden jelszotar a https://<NAS-IP>:18443 cimen, onalairt HTTPS tanusitvannyal, webes tarat es Bitwarden-kompatibilis API-t biztosít."
+release_note = "1.0.1: a tiszta telepites utani ujraindulasi hurok javitasa (/data jogosultsagok), init szolgaltatas a tulajdonjoghoz, idempotens tanusitvanygeneralas, szigorubb fajljogosultsagok, adatvedelmi tajekoztato es pontosabb leiras."
 important = "Az elso inditas onalairt HTTPS tanusitvanyt hasznal, a bongeszo figyelmeztet. Az elso fiok utan kapcsold ki a regisztraciot. Eles hasznalathoz tedd megbizhato HTTPS reverse proxy moge."
 
 [ja-jp]
@@ -71,27 +71,27 @@ important = "첫 실행 시 자체 서명 HTTPS 인증서를 사용하므로 브
 [pl-pl]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Samodzielnie hostowany sejf Vaultwarden pod https://<NAS-IP>:18443 z samopodpisanym certyfikatem HTTPS; udostepnia sejf webowy i API zgodne z Bitwarden."
-release_note = "1.0.1: naprawiono petle restartow po czystej instalacji (uprawnienia /data); usluga inicjujaca wlasnosc, idempotentne generowanie certyfikatu, zaostrzone uprawnienia plikow, polityka prywatnosci i dopasowany opis."
+descript = "Samodzielnie hostowany sejf Vaultwarden pod https://<NAS-IP>:18443 z samopodpisanym certyfikatem HTTPS, udostepnia sejf webowy i API zgodne z Bitwarden."
+release_note = "1.0.1: naprawiono petle restartow po czystej instalacji (uprawnienia /data), usluga inicjujaca wlasnosc, idempotentne generowanie certyfikatu, zaostrzone uprawnienia plikow, polityka prywatnosci i dopasowany opis."
 important = "Przy pierwszym uruchomieniu uzywany jest samopodpisany certyfikat HTTPS i przegladarka pokaze ostrzezenie. Po utworzeniu pierwszego konta wylacz rejestracje. W produkcji umiesc aplikacje za zaufanym reverse proxy HTTPS."
 
 [ru-ru]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Самостоятельно размещаемое хранилище Vaultwarden на https://<NAS-IP>:18443 с самоподписанным HTTPS-сертификатом; предоставляет веб-хранилище и API, совместимый с Bitwarden."
-release_note = "1.0.1: исправлен цикл перезапуска после чистой установки (права /data); добавлен init-сервис для владельца, идемпотентная генерация сертификата, ужесточены права файлов, добавлена политика конфиденциальности и уточнено описание."
+descript = "Самостоятельно размещаемое хранилище Vaultwarden на https://<NAS-IP>:18443 с самоподписанным HTTPS-сертификатом, предоставляет веб-хранилище и API, совместимый с Bitwarden."
+release_note = "1.0.1: исправлен цикл перезапуска после чистой установки (права /data), добавлен init-сервис для владельца, идемпотентная генерация сертификата, ужесточены права файлов, добавлена политика конфиденциальности и уточнено описание."
 important = "При первом запуске используется самоподписанный HTTPS-сертификат, браузер покажет предупреждение. После создания первой учетной записи отключите регистрацию. Для production разместите приложение за доверенным HTTPS reverse proxy."
 
 [tr-tr]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "https://<NAS-IP>:18443 adresinde kendinden imzali HTTPS sertifikasiyla sunulan, kendi sunucunuzda barindirilan Vaultwarden parola kasasi; web kasasi ve Bitwarden uyumlu API saglar."
-release_note = "1.0.1: temiz kurulum sonrasi /data izinlerinden kaynaklanan yeniden baslatma dongusu duzeltildi; sahiplik icin init servisi, idempotent sertifika uretimi, sikilastirilmis dosya izinleri, gizlilik politikasi ve aciklama guncellendi."
+descript = "https://<NAS-IP>:18443 adresinde kendinden imzali HTTPS sertifikasiyla sunulan, kendi sunucunuzda barindirilan Vaultwarden parola kasasi, web kasasi ve Bitwarden uyumlu API saglar."
+release_note = "1.0.1: temiz kurulum sonrasi /data izinlerinden kaynaklanan yeniden baslatma dongusu duzeltildi, sahiplik icin init servisi, idempotent sertifika uretimi, sikilastirilmis dosya izinleri, gizlilik politikasi ve aciklama guncellendi."
 important = "Ilk acilista kendinden imzali HTTPS sertifikasi kullanilir ve tarayici uyarir. Ilk hesaptan sonra kayitlari kapatin. Uretimde guvenilir bir HTTPS reverse proxy arkasina yerlestirin."
 
 [pt-pt]
 name = "MiloVault"
 auth = "miaoqi"
-descript = "Cofre Vaultwarden auto-alojado em https://<NAS-IP>:18443 com certificado HTTPS auto-assinado; disponibiliza o cofre web e uma API compativel com Bitwarden."
-release_note = "1.0.1: corrigido o ciclo de reinicio apos instalacao limpa (permissoes de /data); servico de inicializacao para a propriedade, geracao de certificado idempotente, permissoes restringidas, politica de privacidade e descricao alinhada com o cofre web."
+descript = "Cofre Vaultwarden auto-alojado em https://<NAS-IP>:18443 com certificado HTTPS auto-assinado, disponibiliza o cofre web e uma API compativel com Bitwarden."
+release_note = "1.0.1: corrigido o ciclo de reinicio apos instalacao limpa (permissoes de /data), servico de inicializacao para a propriedade, geracao de certificado idempotente, permissoes restringidas, politica de privacidade e descricao alinhada com o cofre web."
 important = "O primeiro arranque usa um certificado HTTPS auto-assinado e o navegador mostrara um aviso. Desative os registos apos a primeira conta. Em producao, coloque-o atras de um reverse proxy HTTPS fiavel."

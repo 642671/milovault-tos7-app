@@ -18,6 +18,7 @@ MiloVault packages Vaultwarden 1.37.5 for TerraMaster TOS 7 on x86_64.
   `/data/certs` are 0700, and the private key, database, WAL/SHM files, and log
   are 0600. The main container runs as 10001:10001, drops all capabilities, and
   enables `no-new-privileges`.
+- Removed ASCII semicolons from language values, which the platform INI parser treats as comment starts and which truncated the description and release notes in the Parse Result.
 - Added a complete privacy policy and pointed `help` at it.
 - Aligned all 14 descriptions with the delivered web vault and
   Bitwarden-compatible API.

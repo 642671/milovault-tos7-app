@@ -70,6 +70,11 @@ def check_config():
         fail("config.ini: depend must include DockerEngine")
     if cfg.get("compose_project") != cfg.get("id"):
         fail("config.ini: compose_project must equal id")
+    if cfg.get("beta") is not False:
+        fail("config.ini: beta must be false for a stable release")
+    help_url = str(cfg.get("help", ""))
+    if not help_url.startswith("https://") or "PRIVACY.md" not in help_url:
+        fail("config.ini: help must link to the public privacy policy")
     user = str(cfg.get("user", ""))
     if user in ("0", "0:0", "root", "root:root"):
         fail("config.ini: user must be non-root")
@@ -111,13 +116,30 @@ def check_lang():
                 fail("milovault.lang: %s.%s is empty" % (lang, key))
 
 
+def check_privacy():
+    text = read_text("docs/PRIVACY.md")
+    if not text:
+        return
+    for needle in (
+        "Retention",
+        "Security",
+        "Third-party",
+        "Deletion",
+        "User rights",
+    ):
+        if needle not in text:
+            fail("docs/PRIVACY.md: missing section %s" % needle)
+    if len(text) < 2500:
+        fail("docs/PRIVACY.md: policy is too short to cover the review checklist")
+
+
 def check_svg():
     text = read_text("milovault.svg")
     if not text:
         return
     if "<svg" not in text or "viewBox=" not in text:
         fail("milovault.svg: must be an SVG with a viewBox")
-    if re.search(r"<script|onload\s*=|onerror\s*=|href\s*=\s*[\"']https?:", text, re.I):
+    if re.search(r"""<script|onload\s*=|onerror\s*=|href\s*=\s*["']https?:""", text, re.I):
         fail("milovault.svg: scripts or external references are not allowed")
     size = (ROOT / "milovault.svg").stat().st_size
     if size > 50 * 1024:
@@ -130,19 +152,41 @@ def check_compose():
         return
     required = [
         "image: vaultwarden/server:1.37.5",
+        "image: alpine:3.20",
         "container_name: milovault",
+        "container_name: milovault-init",
         "restart: unless-stopped",
         'user: "10001:10001"',
+        'UMASK: "0077"',
         "18443:8443",
         "healthcheck:",
         "x-app-meta:",
         "port: 18443",
         "protocol: https",
         "./data:/data",
+        "milovault-init:",
+        "depends_on:",
+        "condition: service_started",
+        "su nobody",
+        "SETUID",
+        "SETGID",
+        "cap_drop:",
+        "no-new-privileges:true",
+        "chown -R 10001:10001 /data",
+        'trap "exit 0" TERM INT',
+        "failed to generate the self-signed certificate",
+        'DISABLE_ICON_DOWNLOAD: "true"',
+        'ICON_CACHE_TTL: "0"',
     ]
     for needle in required:
         if needle not in text:
             fail("docker-compose.yml: missing %r" % needle)
+    for lineno, line in enumerate(text.splitlines(), 1):
+        if line.lstrip().startswith("#"):
+            continue
+        if re.search(r"(?<!\$)\$(?!\$)", line):
+            fail("docker-compose.yml:%d: escape shell $ as $$ "
+                 "so Compose does not interpolate it" % lineno)
     if ":latest" in text:
         fail("docker-compose.yml: :latest tag is not allowed")
     if re.search(r"privileged\s*:\s*true", text):
@@ -159,13 +203,19 @@ def check_package(path):
                 fail("%s: archive must contain exactly %s" % (path, sorted(PACKAGE_FILES)))
                 return
             for name in names:
-                member = archive.extractfile(name)
-                if member is None:
+                member = archive.getmember(name)
+                data_file = archive.extractfile(name)
+                if data_file is None:
                     fail("%s: %s is not a regular file" % (path, name))
                     continue
-                data = member.read()
+                data = data_file.read()
                 if b"\r\n" in data:
                     fail("%s: %s contains CRLF" % (path, name))
+                if member.mode & 0o777 != 0o644:
+                    fail("%s: %s must be mode 0644 (got %04o)"
+                         % (path, name, member.mode & 0o777))
+                if member.uid != 0 or member.gid != 0:
+                    fail("%s: %s must be owned by root:root" % (path, name))
                 source = ROOT / name
                 if source.is_file() and source.read_bytes() != data:
                     fail("%s: %s differs from the source file" % (path, name))
@@ -181,6 +231,7 @@ def main():
     check_config()
     check_lang()
     check_svg()
+    check_privacy()
     check_compose()
     if args.package:
         check_package(Path(args.package))

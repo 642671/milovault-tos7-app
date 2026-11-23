@@ -8,8 +8,9 @@ tooling and documentation.
 ## What it is
 
 MiloVault runs [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.37.5
-in Docker. Vaultwarden is a Bitwarden-compatible server, so Bitwarden browser
-extensions, mobile apps, and the `bw` CLI can log in and sync.
+in Docker. It serves the Vaultwarden web vault and a Bitwarden-compatible API at
+`https://<nas-ip>:18443`. Bitwarden clients can connect to that URL after the
+user accepts or replaces the self-signed certificate.
 
 The package is intentionally small: the platform pulls the official
 `vaultwarden/server:1.37.5` image from Docker Hub.
@@ -43,8 +44,10 @@ docker compose up -d
 ```
 
 The app listens on host port **18443** and maps to port 8443 inside the
-container. The container runs as UID/GID `10001:10001`; the platform chowns the
-application data directory to that UID.
+container. The main container runs as UID/GID `10001:10001`. A small
+`milovault-init` helper prepares the ownership of the bind-mounted data
+directory, then drops to `nobody` and stays healthy for the platform. The main
+container waits until `/data` is writable instead of entering a restart loop.
 
 ## First run
 
@@ -57,6 +60,9 @@ application data directory to that UID.
    (or the environment) and set `SIGNUPS_ALLOWED=false`, then recreate the
    container.
 
+The first start generates a new certificate only when the existing pair is
+missing, expired, or does not match; a valid pair is reused across restarts.
+
 ## Data
 
 Application data is stored under:
@@ -68,7 +74,9 @@ Application data is stored under:
 The compose mount is `./data:/data`, which the platform resolves to the path
 above. The directory contains `db.sqlite3`, `rsa_key.pem`, attachments, and the
 generated certificate. Uninstalling without selecting "delete data" keeps this
-directory; reinstall reuses it.
+directory; reinstall reuses it. Selecting "delete data" during uninstall removes
+it. The data directory is mode 0700, files are created with `UMASK=0077`, and
+the private key and database are mode 0600.
 
 **Backups must be encrypted.** A backup contains the database and
 `rsa_key.pem`; anyone who obtains an unencrypted backup may be able to recover
@@ -76,10 +84,9 @@ vault contents.
 
 ## Security notice and limitations
 
-- This is a **beta** Docker package. The first-run certificate is self-signed
-  and does not contain the NAS IP, so browsers will warn about both the
-  certificate authority and the hostname. This is not suitable for production
-  without a trusted HTTPS reverse proxy.
+- The first-run certificate is self-signed and does not contain the NAS IP, so
+  browsers will warn about both the certificate authority and the hostname.
+  This is not suitable for production without a trusted HTTPS reverse proxy.
 - The web UI is opened by the App Center in a new tab (`open_path: true`), not
   proxied through TOS. Use a trusted reverse proxy (for example Tailscale Serve)
   for real remote access.
@@ -94,6 +101,16 @@ vault contents.
   the first account.
 - No admin token is configured, so the Vaultwarden `/admin` page is disabled by
   default. Use the compose file to change settings.
+- Website icon fetching is disabled (`DISABLE_ICON_DOWNLOAD=true`,
+  `ICON_CACHE_TTL=0`); the package's only outbound request is the Docker Hub
+  image pull.
+
+## Privacy
+
+The privacy policy is published at [docs/PRIVACY.md](docs/PRIVACY.md) and its
+public URL is used for the `help` field in `config.ini`. The publisher does not
+receive vault data; all persistent data remains under
+`/Volume<N>/DockerAppData/milovault/` on the NAS.
 
 ## Build and validate
 
@@ -110,6 +127,16 @@ sh scripts/build.sh
 dist/milovault.tar.gz
 dist/milovault.tar.gz.sha256
 ```
+
+The archive records root:root ownership and mode 0644 for all four files. The
+main container drops all capabilities, enables `no-new-privileges`, and the
+init container keeps only `CHOWN`, `DAC_OVERRIDE`, `FOWNER`, `SETUID`, and
+`SETGID`; it drops to `nobody` after the ownership step and handles SIGTERM.
+
+Compose interpolates `$` in the compose file before the container starts, so
+the shell snippets escape runtime variables as `$$`. `scripts/validate.py`
+rejects any single-dollar shell reference to keep that behaviour from breaking
+on a clean install.
 
 The GitHub Actions workflow builds and attaches these assets when a `v*` tag is
 pushed.
